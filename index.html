@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blitz Interna - CIPA 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #00ff15 0%, #3b82f6 100%);
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .requirements-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .tab-active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .tab {
+            transition: all 0.3s ease;
+        }
+        .tab:hover:not(.tab-active) {
+            background-color: #dbeafe;
+        }
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+        .medal-gold {
+            color: #FFD700;
+        }
+        .medal-silver {
+            color: #C0C0C0;
+        }
+        .medal-bronze {
+            color: #CD7F32;
+        }
+        .bg-gold {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        .bg-silver {
+            background-color: rgba(192, 192, 192, 0.1);
+        }
+        .bg-bronze {
+            background-color: rgba(205, 127, 50, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Header with logos -->
+        <header class="header-gradient text-white p-6 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <img src="0a978f2c-4aa1-43c6-be8a-74376af8733f.png" alt="Logo CIPA" class="h-16">
+                    <div>
+                        <h1 class="text-3xl font-bold">Blitz Interna - CIPA 2025</h1>
+                        <p class="text-blue-100 mt-2">Avaliação de Segurança Veicular</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="cipa-branco.png" alt="Logo Bree" class="h-12">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto p-4 md:p-6">
+            <!-- Requirements Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Requisitos Avaliativos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Car Requirements -->
+                    <div class="requirements-card p-5">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Carros</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Documentação em dia
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                CNH válida (B)
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Cinto de segurança em uso
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Faróis e lanternas funcionando
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Pneus em bom estado/calibrados
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Para-brisa limpo/palhetas funcionando
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Retrovisores ajustados e inteiros
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Triângulo, macaco e estepe no veículo
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Motorcycle Requirements -->
+                    <div class="requirements-card p-5">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Motos</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Documentação em dia
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                CNH válida (A)
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Capacete afivelado e com viseira ok
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Sinalizações (setas e farol funcionando)
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Pneus em bom estado/calibrados
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Freios em bom estado
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Retrovisor no lugar e regulador
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Vestimenta adequada (sem chinelo/shorts)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Medal Legend Section -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Legenda de Medalhas</h2>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 medal-gold mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Medalha de Ouro</p>
+                                <p class="text-sm text-gray-600">30 pontos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 medal-silver mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Medalha de Prata</p>
+                                <p class="text-sm text-gray-600">26 a 28 pontos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 medal-bronze mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Medalha de Bronze</p>
+                                <p class="text-sm text-gray-600">13 a 24 pontos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Participants Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Participantes e Pontuações</h2>
+                
+                <!-- Tabs -->
+                <div class="flex border-b border-gray-200 mb-6">
+                    <button id="tab-cars" class="tab tab-active py-3 px-6 font-medium rounded-t-lg">Carros</button>
+                    <button id="tab-motorcycles" class="tab py-3 px-6 font-medium rounded-t-lg">Motos</button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div id="tab-content-cars" class="tab-content">
+                    <div class="overflow-x-auto bg-white rounded-lg shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="cars-table-body">
+                                <!-- JS will populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div id="tab-content-motorcycles" class="tab-content hidden">
+                    <div class="overflow-x-auto bg-white rounded-lg shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="motorcycles-table-body">
+                                <!-- JS will populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Estatísticas</h2>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição de Pontuação</h3>
+                    <div class="chart-container" id="score-chart">
+                        <canvas id="scoreDistributionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white p-6">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold">Blitz Interna - CIPA 2025</h3>
+                        <p class="text-gray-400 mt-2">Segurança em primeiro lugar</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <p>© 2025 Allany Santos. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Medal SVGs
+        const goldMedalSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 medal-gold inline-block" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>`;
+        
+        const silverMedalSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 medal-silver inline-block" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>`;
+        
+        const bronzeMedalSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 medal-bronze inline-block" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+        </svg>`;
+
+        // Data
+        const carParticipants = [
+            { name: "Guilherme", sector: "Manutenção", points: 26 },
+            { name: "Luciano", sector: "Montagem MT", points: 13 },
+            { name: "Jair", sector: "Expedição", points: 26 },
+            { name: "Alan", sector: "Expedição", points: 21 },
+            { name: "Vinicius", sector: "Laboratorio", points: 26 },
+            { name: "Noel", sector: "GEN/BT", points: 23 },
+            { name: "Neylon", sector: "GEN/BT", points: 26 },
+            { name: "Edimilson", sector: "Autoclave", points: 28 },
+            { name: "Adriano", sector: "Laboratorio", points: 30 },
+            { name: "Roger", sector: "Engenharia", points: 30 },
+            { name: "Fabricia", sector: "Fiscal", points: 30 },
+            { name: "Antonio", sector: "Diretoria", points: 30 },
+            { name: "Iago", sector: "Montagem MT", points: 30 },
+            { name: "Camille", sector: "RH", points: 30 },
+            { name: "Marcos", sector: "Suprimentos", points: 30 },
+            { name: "Dio", sector: "Projetos", points: 30 },
+            { name: "Paulo", sector: "Almoxarifado", points: 30 },
+            { name: "Emerson", sector: "Laboratorio", points: 30 },
+            { name: "Joel", sector: "Solda", points: 30 },
+            { name: "Fabio", sector: "Monatagem RT", points: 30 },
+            { name: "Airton", sector: "Almoxarifado", points: 30 },
+            { name: "David", sector: "Solda", points: 30 },
+            { name: "Francinete", sector: "Laboratorio", points: 30 },
+            { name: "Allan", sector: "Almoxarifado", points: 30 },
+            { name: "Luan", sector: "Montagem MT", points: 30 },
+            { name: "Gabriel", sector: "Expedição", points: 30 },
+            { name: "Sandro", sector: "Suprimentos", points: 30 },
+            { name: "Kleibe", sector: "Almoxarifado", points: 30 },
+            { name: "Luiz", sector: "Qualidade", points: 30 },
+            { name: "Hugo", sector: "Engenharia", points: 30 },
+            { name: "Wagner", sector: "Projetos", points: 30 }
+        ];
+
+        const motorcycleParticipants = [
+            { name: "Rodrigo", sector: "Gerencia Fábrica", points: 30 },
+            { name: "Jeferson", sector: "Solda", points: 24 },
+            { name: "Nicolas", sector: "GEN/BT", points: 27 },
+            { name: "Jean", sector: "Laboratorio", points: 27 },
+            { name: "Lourival", sector: "GEN/BT", points: 30 },
+            { name: "Emerson", sector: "Reator", points: 30 },
+            { name: "Vanessa", sector: "Monatagem MT", points: 30 }
+        ];
+
+        // Sort participants by points (descending)
+        function sortByPoints(participants) {
+            return [...participants].sort((a, b) => {
+                if (b.points !== a.points) {
+                    return b.points - a.points; // Sort by points descending
+                }
+                return a.name.localeCompare(b.name); // If points are equal, sort by name
+            });
+        }
+
+        // Get medal based on points
+        function getMedalInfo(points) {
+            if (points === 30) {
+                return {
+                    medal: goldMedalSvg,
+                    name: 'Ouro',
+                    bgClass: 'bg-gold'
+                };
+            } else if (points >= 26 && points <= 28) {
+                return {
+                    medal: silverMedalSvg,
+                    name: 'Prata',
+                    bgClass: 'bg-silver'
+                };
+            } else if (points >= 13 && points <= 24) {
+                return {
+                    medal: bronzeMedalSvg,
+                    name: 'Bronze',
+                    bgClass: 'bg-bronze'
+                };
+            } else {
+                return {
+                    medal: '',
+                    name: '',
+                    bgClass: ''
+                };
+            }
+        }
+
+        // Populate tables with medals
+        function populateTable(participants, tableId) {
+            const tableBody = document.getElementById(tableId);
+            tableBody.innerHTML = '';
+            
+            const sortedParticipants = sortByPoints(participants);
+            
+            sortedParticipants.forEach((participant, index) => {
+                const row = document.createElement('tr');
+                const position = index + 1;
+                const medalInfo = getMedalInfo(participant.points);
+                
+                row.className = medalInfo.bgClass;
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${position}º</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${participant.name}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">${participant.sector}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${participant.points} pontos</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">
+                            ${medalInfo.medal} ${medalInfo.name}
+                        </div>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Tab functionality
+        document.getElementById('tab-cars').addEventListener('click', function() {
+            document.getElementById('tab-cars').classList.add('tab-active');
+            document.getElementById('tab-motorcycles').classList.remove('tab-active');
+            document.getElementById('tab-content-cars').classList.remove('hidden');
+            document.getElementById('tab-content-motorcycles').classList.add('hidden');
+        });
+
+        document.getElementById('tab-motorcycles').addEventListener('click', function() {
+            document.getElementById('tab-motorcycles').classList.add('tab-active');
+            document.getElementById('tab-cars').classList.remove('tab-active');
+            document.getElementById('tab-content-motorcycles').classList.remove('hidden');
+            document.getElementById('tab-content-cars').classList.add('hidden');
+        });
+
+        // Score distribution chart
+        function createScoreDistributionChart() {
+            // Count participants by score range
+            const scoreRanges = {
+                '13': 0,
+                '21': 0,
+                '23': 0,
+                '24': 0,
+                '26': 0,
+                '27': 0,
+                '28': 0,
+                '30': 0
+            };
+            
+            [...carParticipants, ...motorcycleParticipants].forEach(participant => {
+                const points = participant.points;
+                if (scoreRanges[points] !== undefined) {
+                    scoreRanges[points]++;
+                } else {
+                    scoreRanges[points] = 1;
+                }
+            });
+            
+            const ctx = document.getElementById('scoreDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(scoreRanges),
+                    datasets: [{
+                        label: 'Número de Participantes',
+                        data: Object.values(scoreRanges),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(255, 159, 64, 0.7)',
+                            'rgba(255, 205, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(201, 203, 207, 0.7)',
+                            'rgba(255, 215, 0, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                            'rgb(255, 215, 0)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            },
+                            title: {
+                                display: true,
+                                text: 'Número de Participantes'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Pontuação'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Distribuição de Pontuação'
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(context) {
+                                    return `${context[0].label} pontos`;
+                                },
+                                label: function(context) {
+                                    const value = context.raw;
+                                    return value === 1 ? '1 participante' : `${value} participantes`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize everything
+        window.onload = function() {
+            // Populate tables
+            populateTable(carParticipants, 'cars-table-body');
+            populateTable(motorcycleParticipants, 'motorcycles-table-body');
+            
+            // Initialize chart
+            createScoreDistributionChart();
+        };
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9445401e103ee3ff',t:'MTc0ODAxMDYxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
