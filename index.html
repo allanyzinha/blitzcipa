@@ -13,7 +13,7 @@
             background-color: #f0f4f8;
         }
         .header-gradient {
-            background: linear-gradient(135deg,  #03f417 0%, #1201ff 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #08ea05 100%);
         }
         .card {
             transition: all 0.3s ease;
@@ -59,6 +59,22 @@
         .bg-bronze {
             background-color: rgba(205, 127, 50, 0.1);
         }
+        .vehicle-type {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .vehicle-car {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+        .vehicle-motorcycle {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
     </style>
 </head>
 <body>
@@ -67,14 +83,14 @@
         <header class="header-gradient text-white p-6 shadow-lg">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center gap-4">
-                    <img src="0a978f2c-4aa1-43c6-be8a-74376af8733f.png" alt="Logo CIPA" class="h-16">
+                    <img src="cipa-branco.png" alt="Logo CIPA" class="h-16">
                     <div>
                         <h1 class="text-3xl font-bold">Blitz Interna - CIPA 2025</h1>
                         <p class="text-blue-100 mt-2">Avaliação de Segurança Veicular</p>
                     </div>
                 </div>
                 <div>
-                    <img src="cipa-branco.png" alt="Logo Bree" class="h-16">
+                    <img src="0a978f2c-4aa1-43c6-be8a-74376af8733f.png" alt="Logo Bree" class="h-12">
                 </div>
             </div>
         </header>
@@ -230,7 +246,7 @@
                             </svg>
                             <div>
                                 <p class="font-semibold">Medalha de Bronze</p>
-                                <p class="text-sm text-gray-600">13 a 24 pontos</p>
+                                <p class="text-sm text-gray-600">0 a 24 pontos</p>
                             </div>
                         </div>
                     </div>
@@ -243,12 +259,33 @@
                 
                 <!-- Tabs -->
                 <div class="flex border-b border-gray-200 mb-6">
-                    <button id="tab-cars" class="tab tab-active py-3 px-6 font-medium rounded-t-lg">Carros</button>
+                    <button id="tab-all" class="tab tab-active py-3 px-6 font-medium rounded-t-lg">Geral</button>
+                    <button id="tab-cars" class="tab py-3 px-6 font-medium rounded-t-lg">Carros</button>
                     <button id="tab-motorcycles" class="tab py-3 px-6 font-medium rounded-t-lg">Motos</button>
                 </div>
                 
                 <!-- Tab Content -->
-                <div id="tab-content-cars" class="tab-content">
+                <div id="tab-content-all" class="tab-content">
+                    <div class="overflow-x-auto bg-white rounded-lg shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Veículo</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="all-table-body">
+                                <!-- JS will populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div id="tab-content-cars" class="tab-content hidden">
                     <div class="overflow-x-auto bg-white rounded-lg shadow">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -290,10 +327,18 @@
             <!-- Statistics Section -->
             <section class="mb-10">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Estatísticas</h2>
-                <div class="bg-white p-5 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição de Pontuação</h3>
-                    <div class="chart-container" id="score-chart">
-                        <canvas id="scoreDistributionChart"></canvas>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-lg shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição de Pontuação</h3>
+                        <div class="chart-container" id="score-chart">
+                            <canvas id="scoreDistributionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição de Medalhas</h3>
+                        <div class="chart-container" id="medal-chart">
+                            <canvas id="medalDistributionChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -332,48 +377,63 @@
 
         // Data
         const carParticipants = [
-            { name: "Guilherme", sector: "Manutenção", points: 26 },
-            { name: "Luciano", sector: "Montagem MT", points: 13 },
-            { name: "Jair", sector: "Expedição", points: 26 },
-            { name: "Alan", sector: "Expedição", points: 21 },
-            { name: "Vinicius", sector: "Laboratorio", points: 26 },
-            { name: "Noel", sector: "GEN/BT", points: 23 },
-            { name: "Neylon", sector: "GEN/BT", points: 26 },
-            { name: "Edimilson", sector: "Autoclave", points: 28 },
-            { name: "Adriano", sector: "Laboratorio", points: 30 },
-            { name: "Roger", sector: "Engenharia", points: 30 },
-            { name: "Fabricia", sector: "Fiscal", points: 30 },
-            { name: "Antonio", sector: "Diretoria", points: 30 },
-            { name: "Iago", sector: "Montagem MT", points: 30 },
-            { name: "Camille", sector: "RH", points: 30 },
-            { name: "Marcos", sector: "Suprimentos", points: 30 },
-            { name: "Dio", sector: "Projetos", points: 30 },
-            { name: "Paulo", sector: "Almoxarifado", points: 30 },
-            { name: "Emerson", sector: "Laboratorio", points: 30 },
-            { name: "Joel", sector: "Solda", points: 30 },
-            { name: "Fabio", sector: "Monatagem RT", points: 30 },
-            { name: "Airton", sector: "Almoxarifado", points: 30 },
-            { name: "David", sector: "Solda", points: 30 },
-            { name: "Francinete", sector: "Laboratorio", points: 30 },
-            { name: "Allan", sector: "Almoxarifado", points: 30 },
-            { name: "Luan", sector: "Montagem MT", points: 30 },
-            { name: "Gabriel", sector: "Expedição", points: 30 },
-            { name: "Sandro", sector: "Suprimentos", points: 30 },
-            { name: "Kleibe", sector: "Almoxarifado", points: 30 },
-            { name: "Luiz", sector: "Qualidade", points: 30 },
-            { name: "Hugo", sector: "Engenharia", points: 30 },
-            { name: "Wagner", sector: "Projetos", points: 30 }
+            { name: "Guilherme", sector: "Manutenção", points: 26, type: "car" },
+            { name: "Luciano", sector: "Montagem MT", points: 13, type: "car" },
+            { name: "Jair", sector: "Expedição", points: 26, type: "car" },
+            { name: "Alan", sector: "Expedição", points: 30, type: "car" },
+            { name: "Vinicius", sector: "Laboratorio", points: 26, type: "car" },
+            { name: "Noel", sector: "GEN/BT", points: 23, type: "car" },
+            { name: "Neylon", sector: "GEN/BT", points: 26, type: "car" },
+            { name: "Edimilson", sector: "Autoclave", points: 28, type: "car" },
+            { name: "Adriano", sector: "Laboratorio", points: 30, type: "car" },
+            { name: "Roger", sector: "Engenharia", points: 30, type: "car" },
+            { name: "Fabricia", sector: "Fiscal", points: 30, type: "car" },
+            { name: "Iago", sector: "Montagem MT", points: 30, type: "car" },
+            { name: "Camille", sector: "RH", points: 30, type: "car" },
+            { name: "Marcos", sector: "Suprimentos", points: 30, type: "car" },
+            { name: "Dio", sector: "Projetos", points: 30, type: "car" },
+            { name: "Paulo", sector: "Almoxarifado", points: 30, type: "car" },
+            { name: "Emerson", sector: "Laboratorio", points: 30, type: "car" },
+            { name: "Joel", sector: "Solda", points: 30, type: "car" },
+            { name: "Fabio", sector: "Monatagem RT", points: 30, type: "car" },
+            { name: "Airton", sector: "Almoxarifado", points: 30, type: "car" },
+            { name: "David", sector: "Solda", points: 30, type: "car" },
+            { name: "Francinete", sector: "Laboratorio", points: 30, type: "car" },
+            { name: "Allan", sector: "Almoxarifado", points: 30, type: "car" },
+            { name: "Luan", sector: "Montagem MT", points: 30, type: "car" },
+            { name: "Gabriel", sector: "Expedição", points: 30, type: "car" },
+            { name: "Kleibe", sector: "Almoxarifado", points: 30, type: "car" },
+            { name: "Luiz", sector: "Qualidade", points: 30, type: "car" },
+            { name: "Wagner", sector: "Projetos", points: 30, type: "car" },
+            // Novos participantes adicionados
+            { name: "Vinicius", sector: "Manutenção", points: 25, type: "car" },
+            { name: "Joelcio", sector: "Bobinagem", points: 30, type: "car" },
+            { name: "Dieine", sector: "SGI", points: 30, type: "car" },
+            { name: "Paulo", sector: "Montagem MT", points: 30, type: "car" },
+            { name: "Gabriel", sector: "Montagem RT", points: 21, type: "car" },
+            { name: "Waldemar", sector: "GEN/BT", points: 30, type: "car" },
+            { name: "Rosicleide", sector: "Montagem MT", points: 30, type: "car" },
+            { name: "Marcos", sector: "Solda", points: 30, type: "car" }
         ];
 
         const motorcycleParticipants = [
-            { name: "Rodrigo", sector: "Gerencia Fábrica", points: 30 },
-            { name: "Jeferson", sector: "Solda", points: 24 },
-            { name: "Nicolas", sector: "GEN/BT", points: 27 },
-            { name: "Jean", sector: "Laboratorio", points: 27 },
-            { name: "Lourival", sector: "GEN/BT", points: 30 },
-            { name: "Emerson", sector: "Reator", points: 30 },
-            { name: "Vanessa", sector: "Monatagem MT", points: 30 }
+
+            { name: "Jeferson", sector: "Solda", points: 24, type: "motorcycle" },
+            { name: "Nicolas", sector: "GEN/BT", points: 27, type: "motorcycle" },
+            { name: "Jean", sector: "Laboratorio", points: 27, type: "motorcycle" },
+            { name: "Lourival", sector: "GEN/BT", points: 30, type: "motorcycle" },
+            { name: "Emerson", sector: "Montagem RT", points: 30, type: "motorcycle" },
+            { name: "Vanessa", sector: "Monatagem MT", points: 30, type: "motorcycle" },
+            // Novos participantes de moto adicionados
+            { name: "Michel", sector: "Laboratorio", points: 30, type: "motorcycle" },
+            { name: "Valdecir", sector: "Montagem MT", points: 25, type: "motorcycle" },
+            { name: "Fernando", sector: "Solda", points: 26, type: "motorcycle" },
+            { name: "Anthony", sector: "Engenharia", points: 30, type: "motorcycle" },
+            { name: "Tony", sector: "Solda", points: 30, type: "motorcycle" }
         ];
+
+        // Combine all participants
+        const allParticipants = [...carParticipants, ...motorcycleParticipants];
 
         // Sort participants by points (descending)
         function sortByPoints(participants) {
@@ -391,31 +451,35 @@
                 return {
                     medal: goldMedalSvg,
                     name: 'Ouro',
-                    bgClass: 'bg-gold'
+                    bgClass: 'bg-gold',
+                    category: 'gold'
                 };
             } else if (points >= 26 && points <= 28) {
                 return {
                     medal: silverMedalSvg,
                     name: 'Prata',
-                    bgClass: 'bg-silver'
+                    bgClass: 'bg-silver',
+                    category: 'silver'
                 };
-            } else if (points >= 13 && points <= 24) {
+            } else if (points >= 13 && points <= 25) {
                 return {
                     medal: bronzeMedalSvg,
                     name: 'Bronze',
-                    bgClass: 'bg-bronze'
+                    bgClass: 'bg-bronze',
+                    category: 'bronze'
                 };
             } else {
                 return {
                     medal: '',
                     name: '',
-                    bgClass: ''
+                    bgClass: '',
+                    category: 'none'
                 };
             }
         }
 
         // Populate tables with medals
-        function populateTable(participants, tableId) {
+        function populateTable(participants, tableId, includeVehicleType = false) {
             const tableBody = document.getElementById(tableId);
             tableBody.innerHTML = '';
             
@@ -428,6 +492,17 @@
                 
                 row.className = medalInfo.bgClass;
                 
+                let vehicleTypeCell = '';
+                if (includeVehicleType) {
+                    const vehicleTypeClass = participant.type === 'car' ? 'vehicle-car' : 'vehicle-motorcycle';
+                    const vehicleTypeName = participant.type === 'car' ? 'Carro' : 'Moto';
+                    vehicleTypeCell = `
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="vehicle-type ${vehicleTypeClass}">${vehicleTypeName}</span>
+                        </td>
+                    `;
+                }
+                
                 row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900">${position}º</div>
@@ -438,6 +513,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-500">${participant.sector}</div>
                     </td>
+                    ${vehicleTypeCell}
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900">${participant.points} pontos</div>
                     </td>
@@ -453,51 +529,62 @@
         }
 
         // Tab functionality
+        document.getElementById('tab-all').addEventListener('click', function() {
+            document.getElementById('tab-all').classList.add('tab-active');
+            document.getElementById('tab-cars').classList.remove('tab-active');
+            document.getElementById('tab-motorcycles').classList.remove('tab-active');
+            document.getElementById('tab-content-all').classList.remove('hidden');
+            document.getElementById('tab-content-cars').classList.add('hidden');
+            document.getElementById('tab-content-motorcycles').classList.add('hidden');
+        });
+
         document.getElementById('tab-cars').addEventListener('click', function() {
             document.getElementById('tab-cars').classList.add('tab-active');
+            document.getElementById('tab-all').classList.remove('tab-active');
             document.getElementById('tab-motorcycles').classList.remove('tab-active');
             document.getElementById('tab-content-cars').classList.remove('hidden');
+            document.getElementById('tab-content-all').classList.add('hidden');
             document.getElementById('tab-content-motorcycles').classList.add('hidden');
         });
 
         document.getElementById('tab-motorcycles').addEventListener('click', function() {
             document.getElementById('tab-motorcycles').classList.add('tab-active');
+            document.getElementById('tab-all').classList.remove('tab-active');
             document.getElementById('tab-cars').classList.remove('tab-active');
             document.getElementById('tab-content-motorcycles').classList.remove('hidden');
+            document.getElementById('tab-content-all').classList.add('hidden');
             document.getElementById('tab-content-cars').classList.add('hidden');
         });
 
         // Score distribution chart
         function createScoreDistributionChart() {
             // Count participants by score range
-            const scoreRanges = {
-                '13': 0,
-                '21': 0,
-                '23': 0,
-                '24': 0,
-                '26': 0,
-                '27': 0,
-                '28': 0,
-                '30': 0
-            };
+            const scoreRanges = {};
             
-            [...carParticipants, ...motorcycleParticipants].forEach(participant => {
+            // Collect all unique point values
+            allParticipants.forEach(participant => {
                 const points = participant.points;
-                if (scoreRanges[points] !== undefined) {
-                    scoreRanges[points]++;
-                } else {
-                    scoreRanges[points] = 1;
+                if (scoreRanges[points] === undefined) {
+                    scoreRanges[points] = 0;
                 }
+                scoreRanges[points]++;
+            });
+            
+            // Sort the keys numerically
+            const sortedKeys = Object.keys(scoreRanges).sort((a, b) => parseInt(a) - parseInt(b));
+            const sortedScoreRanges = {};
+            sortedKeys.forEach(key => {
+                sortedScoreRanges[key] = scoreRanges[key];
             });
             
             const ctx = document.getElementById('scoreDistributionChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: Object.keys(scoreRanges),
+                    labels: Object.keys(sortedScoreRanges),
                     datasets: [{
                         label: 'Número de Participantes',
-                        data: Object.values(scoreRanges),
+                        data: Object.values(sortedScoreRanges),
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.7)',
                             'rgba(255, 159, 64, 0.7)',
@@ -566,15 +653,77 @@
             });
         }
 
+        // Medal distribution chart
+        function createMedalDistributionChart() {
+            // Count medals
+            let goldCount = 0;
+            let silverCount = 0;
+            let bronzeCount = 0;
+            
+            allParticipants.forEach(participant => {
+                const medalInfo = getMedalInfo(participant.points);
+                if (medalInfo.category === 'gold') {
+                    goldCount++;
+                } else if (medalInfo.category === 'silver') {
+                    silverCount++;
+                } else if (medalInfo.category === 'bronze') {
+                    bronzeCount++;
+                }
+            });
+            
+            const ctx = document.getElementById('medalDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Ouro', 'Prata', 'Bronze'],
+                    datasets: [{
+                        data: [goldCount, silverCount, bronzeCount],
+                        backgroundColor: [
+                            'rgba(255, 215, 0, 0.7)',
+                            'rgba(192, 192, 192, 0.7)',
+                            'rgba(205, 127, 50, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 215, 0)',
+                            'rgb(192, 192, 192)',
+                            'rgb(205, 127, 50)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Distribuição de Medalhas'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    const percentage = Math.round((value / allParticipants.length) * 100);
+                                    return `${context.label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         // Initialize everything
         window.onload = function() {
             // Populate tables
+            populateTable(allParticipants, 'all-table-body', true);
             populateTable(carParticipants, 'cars-table-body');
             populateTable(motorcycleParticipants, 'motorcycles-table-body');
             
-            // Initialize chart
+            // Initialize charts
             createScoreDistributionChart();
+            createMedalDistributionChart();
         };
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9445401e103ee3ff',t:'MTc0ODAxMDYxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'945f279683f31cf5',t:'MTc0ODI4MjI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
