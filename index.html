@@ -13,7 +13,7 @@
             background-color: #f0f4f8;
         }
         .header-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #08ea05 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #33ff01 100%);
         }
         .card {
             transition: all 0.3s ease;
@@ -237,7 +237,7 @@
                             </svg>
                             <div>
                                 <p class="font-semibold">Medalha de Prata</p>
-                                <p class="text-sm text-gray-600">26 a 28 pontos</p>
+                                <p class="text-sm text-gray-600">25 a 28 pontos</p>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -246,7 +246,7 @@
                             </svg>
                             <div>
                                 <p class="font-semibold">Medalha de Bronze</p>
-                                <p class="text-sm text-gray-600">0 a 24 pontos</p>
+                                <p class="text-sm text-gray-600">13 a 23 pontos</p>
                             </div>
                         </div>
                     </div>
@@ -255,7 +255,7 @@
 
             <!-- Participants Section -->
             <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">Participantes e Pontuações</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Participantes e Medalhas</h2>
                 
                 <!-- Tabs -->
                 <div class="flex border-b border-gray-200 mb-6">
@@ -270,11 +270,9 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Veículo</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
                                 </tr>
                             </thead>
@@ -290,10 +288,8 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
                                 </tr>
                             </thead>
@@ -309,10 +305,8 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posição</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pontuação</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medalha</th>
                                 </tr>
                             </thead>
@@ -380,7 +374,7 @@
             { name: "Guilherme", sector: "Manutenção", points: 26, type: "car" },
             { name: "Luciano", sector: "Montagem MT", points: 13, type: "car" },
             { name: "Jair", sector: "Expedição", points: 26, type: "car" },
-            { name: "Alan", sector: "Expedição", points: 30, type: "car" },
+            { name: "Alan", sector: "Expedição", points: 21, type: "car" },
             { name: "Vinicius", sector: "Laboratorio", points: 26, type: "car" },
             { name: "Noel", sector: "GEN/BT", points: 23, type: "car" },
             { name: "Neylon", sector: "GEN/BT", points: 26, type: "car" },
@@ -388,6 +382,7 @@
             { name: "Adriano", sector: "Laboratorio", points: 30, type: "car" },
             { name: "Roger", sector: "Engenharia", points: 30, type: "car" },
             { name: "Fabricia", sector: "Fiscal", points: 30, type: "car" },
+            { name: "Antonio", sector: "Diretoria", points: 30, type: "car" },
             { name: "Iago", sector: "Montagem MT", points: 30, type: "car" },
             { name: "Camille", sector: "RH", points: 30, type: "car" },
             { name: "Marcos", sector: "Suprimentos", points: 30, type: "car" },
@@ -402,8 +397,10 @@
             { name: "Allan", sector: "Almoxarifado", points: 30, type: "car" },
             { name: "Luan", sector: "Montagem MT", points: 30, type: "car" },
             { name: "Gabriel", sector: "Expedição", points: 30, type: "car" },
+            { name: "Sandro", sector: "Suprimentos", points: 30, type: "car" },
             { name: "Kleibe", sector: "Almoxarifado", points: 30, type: "car" },
             { name: "Luiz", sector: "Qualidade", points: 30, type: "car" },
+            { name: "Hugo", sector: "Engenharia", points: 30, type: "car" },
             { name: "Wagner", sector: "Projetos", points: 30, type: "car" },
             // Novos participantes adicionados
             { name: "Vinicius", sector: "Manutenção", points: 25, type: "car" },
@@ -417,12 +414,12 @@
         ];
 
         const motorcycleParticipants = [
-
+            { name: "Rodrigo", sector: "Gerencia Fábrica", points: 30, type: "motorcycle" },
             { name: "Jeferson", sector: "Solda", points: 24, type: "motorcycle" },
             { name: "Nicolas", sector: "GEN/BT", points: 27, type: "motorcycle" },
             { name: "Jean", sector: "Laboratorio", points: 27, type: "motorcycle" },
             { name: "Lourival", sector: "GEN/BT", points: 30, type: "motorcycle" },
-            { name: "Emerson", sector: "Montagem RT", points: 30, type: "motorcycle" },
+            { name: "Emerson", sector: "Reator", points: 30, type: "motorcycle" },
             { name: "Vanessa", sector: "Monatagem MT", points: 30, type: "motorcycle" },
             // Novos participantes de moto adicionados
             { name: "Michel", sector: "Laboratorio", points: 30, type: "motorcycle" },
@@ -485,9 +482,8 @@
             
             const sortedParticipants = sortByPoints(participants);
             
-            sortedParticipants.forEach((participant, index) => {
+            sortedParticipants.forEach((participant) => {
                 const row = document.createElement('tr');
-                const position = index + 1;
                 const medalInfo = getMedalInfo(participant.points);
                 
                 row.className = medalInfo.bgClass;
@@ -505,18 +501,12 @@
                 
                 row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">${position}º</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900">${participant.name}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-500">${participant.sector}</div>
                     </td>
                     ${vehicleTypeCell}
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">${participant.points} pontos</div>
-                    </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900">
                             ${medalInfo.medal} ${medalInfo.name}
@@ -725,5 +715,5 @@
             createMedalDistributionChart();
         };
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'945f279683f31cf5',t:'MTc0ODI4MjI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9460202856781cef',t:'MTc0ODI5MjQyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
